@@ -1,5 +1,5 @@
 export default function Timer({ onClickStartStop, onReset, timeText, time, start, setStart }) {
-    console.log(time)
+
     return (
         <div>
             <p id="timer-label">{timeText}</p>

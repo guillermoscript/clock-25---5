@@ -99,7 +99,7 @@ function App() {
     if (start) {
       const interval = setInterval(() => {
         if (checkIsRunning() === 'break') {
-          // console.log('break running', time)
+
           if (time === 0) {
             setClockRunning(prev => {
               return {
@@ -117,11 +117,9 @@ function App() {
           });
         }
         if (checkIsRunning() === 'session') {
-        
-          // console.log('session running', time)
 
           if (time === 0) {
-            // console.log('session reached 0')
+
             setClockRunning(prev => {
               return {
                 ...prev,
@@ -138,12 +136,13 @@ function App() {
           });
         }
       }, 1000);
+      
       return () => clearInterval(interval);
     }
-  }, [start,time]) 
+  }, [start, time])
 
   let completeTime = new Date((time * 1000) + 1).toISOString().slice(14, 19);
-  if (time === 3600) 
+  if (time === 3600)
     completeTime = '60:00';
 
   return (
@@ -157,24 +156,24 @@ function App() {
         </a>
       </div>
       <h1>Vite + React 25 + 5 Clock</h1>
-      <div className='wrp'> 
-      <TimeButtons 
-        lengthId="break"
-        lengthText="Break Length"
-        numberLenght={breakLength}
-        disabled={start}
-        onClick={onClickTimeButtons}
-      />
-      <TimeButtons
-        lengthId="session"
-        lengthText="Session Length"
-        numberLenght={sessionLength}
-        disabled={start}
-        onClick={onClickTimeButtons}
-      />
+      <div className='wrp'>
+        <TimeButtons
+          lengthId="break"
+          lengthText="Break Length"
+          numberLenght={breakLength}
+          disabled={start}
+          onClick={onClickTimeButtons}
+        />
+        <TimeButtons
+          lengthId="session"
+          lengthText="Session Length"
+          numberLenght={sessionLength}
+          disabled={start}
+          onClick={onClickTimeButtons}
+        />
 
       </div>
-      <Timer 
+      <Timer
         onClickStartStop={onClickStartStop}
         onReset={onReset}
         timeText={timeText}
